@@ -17,9 +17,9 @@ class WeatherApp(QWidget):
         self.get_weather_button = QPushButton("Get Weather", self)  # Button to trigger weather fetch
         
         # Labels to display weather results (placeholder values for now)
-        self.temperature_label = QLabel("30°c", self)
-        self.emoji_label = QLabel("☀", self)
-        self.description_label = QLabel("Sunny", self)
+        self.temperature_label = QLabel(self)
+        self.emoji_label = QLabel(self)
+        self.description_label = QLabel(self)
         self.initUI()
 
     ## INITIALIZES THE USER INTERFACE
@@ -61,8 +61,36 @@ class WeatherApp(QWidget):
                 font-size: 40px;
                 font-style: italic;
             }
+            QLineEdit#city_input {
+                font-size: 30px;          
+            }
+            QPushButton#get_weather_button {
+                font-size: 30 px;
+                font-weight: bold;               
+            }
+            QLabel#temperature_label {
+                font-size: 75px;               
+            }
+            QLabel#emoji_label {
+                font-size: 100px;
+                font-family: Segoe UI emoji
+            }
+            QLabel#description_label {
+                font-size: 50px;               
+            }
         """)
+
+        # WHEN USER CLICKS ON THE BUTTON get_weather WILL BE CALLED
+        self.get_weather_button.clicked.connect(self.get_weather)
         
+    def get_weather(self):
+        pass
+
+    def display_error(self, message):
+        pass
+
+    def display_weather(self, data):
+        pass
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
