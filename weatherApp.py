@@ -3,6 +3,7 @@ import requests
 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel,
                              QLineEdit, QPushButton, QVBoxLayout)
 from PyQt5.QtCore import Qt
+from datetime import datetime
 
 class WeatherApp(QWidget):
 
@@ -178,7 +179,11 @@ class WeatherApp(QWidget):
         elif 701 <= weather_id <= 741:
             return "🌫️"
         elif weather_id == 800:
-            return "☀️" 
+            now = datetime.now()
+            if 7 <= now.hour <= 19:
+                return "☀️" 
+            else:
+                return "🌙"
         elif 801 <= weather_id <= 804:
             return "☁️"
         else:
